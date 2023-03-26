@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+<!--        <css src="Amasty_UserName::css/beautiful.css" rel="stylesheet" type="text/css"></css>-->
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block name="userName.mainBlock"
+                   class="Amasty\UserName\Block\Index"
+                   template="Amasty_UserName::index.phtml">
+                <block name="userName.secondBlock"
+                       template="Amasty_UserName::secondblock.phtml"/>
+                <block name="userName.secondBlock1"
+                       template="Amasty_UserName::secondblock.phtml"/>
+                <block name="userName.secondBlock2"
+                           template="Amasty_UserName::secondblock.phtml"/>
+            </block>
+        </referenceContainer>
+<!--        <move element="footer" destination="userName.mainBlock" after="userName.secondBlock1"/>-->
+<!--        <referenceContainer name="footer" display="false"/>-->
+    </body>
+</page>
