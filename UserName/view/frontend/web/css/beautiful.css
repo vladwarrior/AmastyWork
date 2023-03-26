@@ -1,0 +1,40 @@
+.column.main{
+    border: 10px solid red;
+    border-radius: 17px;
+    width: 50%;
+}
+.helloClass{
+    background-color: #00feff;
+    margin: 0px;
+    padding: 0px;
+}
+
+.myForm{
+    border: 5px solid #004c74;
+    padding-bottom: 10px;
+}
+
+.formClass {
+    width: 290px;
+}
+
+.css_class_signature{
+    font-size: 24px;
+    text-align: center;
+}
+
+.css_class_sku{
+    color: green;
+    width: 100%;
+    /*margin: 5px 0;*/
+    /*padding: 5px 15px;*/
+}
+.css_class_qty{
+    color: blue;
+    width: 100%;
+    /*margin: 5px 0;*/
+    /*padding: 5px 15px;*/
+}
+.submit_btn{
+    text-align: center;
+}
