@@ -1,7 +1,7 @@
 <?php
 /**
-   * @var Amasty\UserName\Block\Username $cssClass
-  *  @var Amasty\UserName\Block\Username $block
+   * @var Amasty\UserName\Block $block
+
  */
 ?>
 <div class="formClass">
@@ -10,15 +10,18 @@
             It's my form
         </div>
 
+
         <div class="<?= $cssClass = $block->hasCssClassSku() ? ' ' . $block->getCssClassSku() : ''; ?>">
             SKU
             <input  type="text" name="sku" required="required">
         </div>
 
+        <?php if ($block->getIsShowQty()): ?>
         <div class="<?= $cssClass = $block->hasCssClassQty() ? ' ' . $block->getCssClassQty() : ''; ?>">
             Quantity
-            <input type="number" name="qty" required="required">
+            <input type="number" name="qty" required="required" value="<?= $block->getQty() ?: ''; ?>">
         </div>
+        <?php endif; ?>
 
         <?= $block->getChildHtml() ?>
 
