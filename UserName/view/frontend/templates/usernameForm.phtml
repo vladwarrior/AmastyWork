@@ -1,25 +1,29 @@
 <?php
 /**
    * @var Amasty\UserName\Block $block
-
  */
 ?>
 <div class="formClass">
-    <form class="myForm" name="feedback" method="POST" action="/">
+    <form class="myForm" name="feedback" method="POST" action="/mypage/usernameform/usernameform" data-mage-init='{
+    "validation":
+        {"rules":
+            {"qty":
+                {"required":true, "min":0, "type":"number"}
+            }
+        }}'>
         <div class="<?= $cssClass = $block->hasCssClassSignature() ? ' ' . $block->getCssClassSignature() : ''; ?>">
             It's my form
         </div>
 
-
         <div class="<?= $cssClass = $block->hasCssClassSku() ? ' ' . $block->getCssClassSku() : ''; ?>">
             SKU
-            <input  type="text" name="sku" required="required">
+            <input  type="text" name="sku" data-validate='{"required":true}'>
         </div>
 
         <?php if ($block->getIsShowQty()): ?>
         <div class="<?= $cssClass = $block->hasCssClassQty() ? ' ' . $block->getCssClassQty() : ''; ?>">
             Quantity
-            <input type="number" name="qty" required="required" value="<?= $block->getQty() ?: ''; ?>">
+            <input type="number" name="qty" value="<?= $block->getQty() ?: ''; ?>">
         </div>
         <?php endif; ?>
 

@@ -5,7 +5,6 @@ namespace Amasty\UserName\Block;
 use Amasty\UserName\Model\ConfigProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\Template\Context;
 
 class Username extends Template
 {
