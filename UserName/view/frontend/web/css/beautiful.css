@@ -26,15 +26,22 @@
 .css_class_sku{
     color: green;
     width: 100%;
-    /*margin: 5px 0;*/
-    /*padding: 5px 15px;*/
 }
 .css_class_qty{
     color: blue;
     width: 100%;
-    /*margin: 5px 0;*/
-    /*padding: 5px 15px;*/
 }
 .submit_btn{
     text-align: center;
+}
+.listLi{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+.listUl li{
+    border-bottom: 1px solid green;
+}
+.listUl{
+    list-style-type: none;
 }

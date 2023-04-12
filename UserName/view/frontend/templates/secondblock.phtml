@@ -1,3 +1,66 @@
 <div>
     <h2>Second Block!</h2>
 </div>
+
+<div data-bind="scope: 'coolAutocomplete'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+   {
+       "*": {
+           "Magento_Ui/js/core/app": {
+               "components": {
+                   "coolAutocomplete": {
+                       "component": "Amasty_UserName/js/koAutocomplete",
+                       "template" : "Amasty_UserName/koAutocomplete"
+                   }
+               }
+           }
+       }
+   }
+</script>
+
+
+<!---->
+<!--<div class="search-widget">-->
+<!--    <label>Search:</label>-->
+<!--    <input type="text" name="test-search" id="test-search-input">-->
+<!--    <ul class="search-result-list"></ul>-->
+<!--</div>-->
+<!--<script type="text/x-magento-init">-->
+<!--    {-->
+<!--        ".search-widget": {-->
+<!--            "Amasty_UserName/js/widgetAutoComplete": {"minChars":"3"}-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--<script type="text/x-magento-init">-->
+<!--    {-->
+<!--        ".logo": {-->
+<!--            "Amasty_UserName/js/hider": {"selector":".page-footer"}-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--<script type="text/x-magento-init">-->
+<!--    {-->
+<!--        "*": {-->
+<!--            "Amasty_UserName/js/hider": {}-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--<script>-->
+<!--    require(['jquery'], function ($){-->
+<!--        $('.page-footer').hide();-->
+<!--    });-->
+<!---->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        document.getElementsByClassName('logo')[0].style.display = 'none';-->
+<!--        document.getElementsByClassName('page-footer')[0].style.display = 'none';-->
+<!--    });-->
+<!--</script>-->

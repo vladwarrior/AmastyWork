@@ -15,9 +15,8 @@
             It's my form
         </div>
 
-        <div class="<?= $cssClass = $block->hasCssClassSku() ? ' ' . $block->getCssClassSku() : ''; ?>">
-            SKU
-            <input  type="text" name="sku" data-validate='{"required":true}'>
+        <div data-bind="scope: 'skuAutocomplete'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
         </div>
 
         <?php if ($block->getIsShowQty()): ?>
@@ -34,3 +33,17 @@
         </div>
     </form>
 </div>
+<script type="text/x-magento-init">
+   {
+       "*": {
+           "Magento_Ui/js/core/app": {
+               "components": {
+                   "skuAutocomplete": {
+                       "component": "Amasty_UserName/js/koAutocomplete",
+                       "template" : "Amasty_UserName/koAutocomplete"
+                   }
+               }
+           }
+       }
+   }
+</script>
