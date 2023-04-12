@@ -1,0 +1,26 @@
+<!--<div>-->
+<!--    <label for="test-search-input">Search: </label>-->
+<!--    <input type="text" name="test-search" id="test-search-input" data-bind="textInput: searchText"/>-->
+<!--    <div class="test-autocomplete-list">-->
+<!--        <ul class="test-autocomplete-ul" data-bind="foreach: searchResult">-->
+<!--            <li data-bind="text:sku"><li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<div>
+    <label for="sku">sku:</label>
+    <input type="text" data-bind="textInput: searchText" name="sku" id="sku"/>
+    <div>
+        <ul data-bind="foreach: searchResult" class="listUl">
+            <li>
+                <div class="listLi">
+                    <div data-bind="text: sku"></div>
+                    <div data-bind="text: name"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -11,8 +11,6 @@
                    template="Amasty_UserName::index.phtml">
                 <block name="userName.secondBlock"
                        template="Amasty_UserName::secondblock.phtml"/>
-                <block name="userName.secondBlock1"
-                       template="Amasty_UserName::secondblock.phtml"/>
                 <block name="userName.secondBlock2"
                            template="Amasty_UserName::secondblock.phtml"/>
             </block>
