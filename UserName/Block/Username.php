@@ -6,6 +6,7 @@ use Amasty\UserName\Model\ConfigProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template;
 
+
 class Username extends Template
 {
     /**
@@ -17,6 +18,8 @@ class Username extends Template
      * @var ConfigProvider
      */
     private $configProvider;
+
+
 
     public function __construct(
         ConfigProvider   $configProvider,
