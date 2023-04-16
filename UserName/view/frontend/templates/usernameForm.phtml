@@ -1,16 +1,11 @@
 <?php
 /**
-   * @var Amasty\UserName\Block $block
+   * @var Amasty\UserName\Block\UsernameForm $block
  */
 ?>
 <div class="formClass">
-    <form class="myForm" name="feedback" method="POST" action="/mypage/usernameform/usernameform" data-mage-init='{
-    "validation":
-        {"rules":
-            {"qty":
-                {"required":true, "min":0, "type":"number"}
-            }
-        }}'>
+    <form class="myForm" name="feedback" method="POST" action="/mypage/usernameform/usernameform">
+<!--        action='<?php //= $block->getFormAction() ?>'-->
         <div class="<?= $cssClass = $block->hasCssClassSignature() ? ' ' . $block->getCssClassSignature() : ''; ?>">
             It's my form
         </div>
@@ -22,7 +17,9 @@
         <?php if ($block->getIsShowQty()): ?>
         <div class="<?= $cssClass = $block->hasCssClassQty() ? ' ' . $block->getCssClassQty() : ''; ?>">
             Quantity
-            <input type="number" name="qty" value="<?= $block->getQty() ?: ''; ?>">
+            <input type="number" name="qty" value="<?= $block->getQty() ?: ''; ?>"
+                   data-validate="{required:true, min:0, type:number}"
+            />
         </div>
         <?php endif; ?>
 

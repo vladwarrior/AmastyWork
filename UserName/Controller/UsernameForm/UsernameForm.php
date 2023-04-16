@@ -3,12 +3,11 @@
 namespace Amasty\UserName\Controller\UsernameForm;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\ManagerInterface;
-use mysql_xdevapi\Exception;
+use Magento\Framework\Event\ManagerInterface as EventManager;
 
 
 class UsernameForm implements ActionInterface
@@ -31,34 +30,42 @@ class UsernameForm implements ActionInterface
      */
     private $productRepository;
 
+    /**
+     * @var \Magento\Framework\Controller\Result\RedirectFactory
+     */
     protected $resultRedirectFactory;
+    private \Magento\Framework\App\RequestInterface $request;
 
     /**
-     * @param ResultFactory $resultFactory
-     * @param ManagerInterface $messageManager
-     * @param Session $checkoutSession
-     * @param ProductRepositoryInterface $productRepository
+     * @var EventManager
      */
+    private EventManager $eventManager;
+
+
     public function __construct(
+        EventManager $eventManager,
         ResultFactory    $resultFactory,
         ManagerInterface $messageManager,
         Session          $checkoutSession,
         ProductRepositoryInterface $productRepository,
-        \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory
+        \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
+        \Magento\Framework\App\RequestInterface $request
     )
     {
+        $this->eventManager = $eventManager;
         $this->resultFactory = $resultFactory;
         $this->messageManager = $messageManager;
-
         $this->checkoutSession = $checkoutSession;
         $this->productRepository = $productRepository;
         $this->resultRedirectFactory = $resultRedirectFactory;
+        $this->request = $request;
     }
 
     public function execute()
     {
-        $qty = $_POST['qty'];
-        $sku = $_POST['sku'];
+
+        $qty = $this->request->getParam('qty');
+        $sku = $this->request->getParam('sku');;
         $quote = $this->checkoutSession->getQuote();
 
         if ($quote->getId()) {
@@ -71,7 +78,14 @@ class UsernameForm implements ActionInterface
                 if ($product->getData()['type_id'] == 'simple') {
                     if ($product->getData()['quantity_and_stock_status']['qty'] >= $qty) {
                         $quote->addProduct($product, $qty);
-                        $this->messageManager->addSuccessMessage(__('Товар(-ы) успешно добавлен(-ы) в корзину'));
+//                        $this->eventManager->dispatch(
+//                            'amasty_secondUserName_add_product_to_cart',
+//                            ['product' => $product]);
+                        if($qty > 1) {
+                            $this->messageManager->addSuccessMessage(__('Товары успешно добавлены в корзину'));
+                        } else {
+                            $this->messageManager->addSuccessMessage(__('Товар успешно добавлен в корзину'));
+                        }
                     } else {
                         $this->messageManager->addErrorMessage(__('Нет достаточного qty'));
                     }
@@ -89,6 +103,5 @@ class UsernameForm implements ActionInterface
         $result = $this->resultRedirectFactory->create();
         $result->setPath('*/username/username');
         return $result;
-        //header('Location: http://localhost/mypage/username/username');
     }
 }
