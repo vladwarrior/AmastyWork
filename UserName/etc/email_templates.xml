@@ -13,10 +13,10 @@
 <!--              module="Amasty_UserName"-->
 <!--              area="frontend"/>-->
 
-    <template id="amasty_username_email_template"
+    <template id="test_config_general_email_template"
               label="Blacklist Email Template"
               file="email_template.html"
               type="html"
               module="Amasty_UserName"
-              area="frontend"/>exit
+              area="frontend"/>
 </config>
