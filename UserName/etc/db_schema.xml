@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+<!--    <table name="amasty_wishes" resource="default" engine="innodb" comment="Wish List Table">-->
+<!--        <column xsi:type="int" name="wish_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Wish Id"/>-->
+<!--        <column xsi:type="varchar" name="text" nullable="false" length="255" default="" comment="Wish Text"/>-->
+<!--        <column xsi:type="boolean" name="done" nullable="false" comment="Is Wish Done"/>-->
+
+<!--        <constraint xsi:type="primary" referenceId="PRIMARY">-->
+<!--            <column name="wish_id"/>-->
+<!--        </constraint>-->
+<!--    </table>-->
+    <table name="amasty_username_blacklist" resource="default" engine="innodb" comment="Black List Table">
+        <column xsi:type="int" name="blacklist_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Black List ID" />
+        <column xsi:type="varchar" name="sku" nullable="false" length="255" default="" comment="SKU product" />
+        <column xsi:type="int" name="qty" nullable="false" unsigned="true" comment="QTY product" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blacklist_id" />
+        </constraint>
+    </table>
+</schema>

@@ -4,7 +4,7 @@
 <!--    <type name="Amasty\UserName\Block\UsernameForm">-->
 <!--        <plugin name="Amasty_SecondUsername::ChangeFormAction" type="Amasty\SecondUserName\Plugin\ChangeFormAction"/>-->
 <!--    </type>-->
-    <preference for="Amasty\UserName\Controller\Username\Username" type="Amasty\SecondUserName\Controller\Index"/>
+<!--    <preference for="Amasty\UserName\Controller\Username\Username" type="Amasty\SecondUserName\Controller\Index"/>-->
 </config>
 
 

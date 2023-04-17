@@ -41,6 +41,8 @@ class UsernameForm implements ActionInterface
      */
     private EventManager $eventManager;
 
+    private \Amasty\UserName\Model\BlacklistRepository $blacklistRepository;
+
 
     public function __construct(
         EventManager $eventManager,
@@ -49,7 +51,8 @@ class UsernameForm implements ActionInterface
         Session          $checkoutSession,
         ProductRepositoryInterface $productRepository,
         \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
-        \Magento\Framework\App\RequestInterface $request
+        \Magento\Framework\App\RequestInterface $request,
+        \Amasty\UserName\Model\BlacklistRepository $blacklistRepository
     )
     {
         $this->eventManager = $eventManager;
@@ -59,6 +62,7 @@ class UsernameForm implements ActionInterface
         $this->productRepository = $productRepository;
         $this->resultRedirectFactory = $resultRedirectFactory;
         $this->request = $request;
+        $this->blacklistRepository = $blacklistRepository;
     }
 
     public function execute()
@@ -77,7 +81,28 @@ class UsernameForm implements ActionInterface
             if ($product->getId()) {
                 if ($product->getData()['type_id'] == 'simple') {
                     if ($product->getData()['quantity_and_stock_status']['qty'] >= $qty) {
-                        $quote->addProduct($product, $qty);
+                        $blacklistSku = $this->blacklistRepository->getBySku($sku);
+                        $blacklistSkuQty = $blacklistSku->getQty();
+
+                        if ($blacklistSku->getData()) {
+                            $productsInCart = $quote->getItemByProduct($product);
+                            $productsInCart = $productsInCart ? $productsInCart->getQty() : 0;
+                            $averageProductsCount = $qty + $productsInCart;
+
+                            if ($blacklistSkuQty >= $averageProductsCount) {
+                                $quote->addProduct($product, $qty);
+                                $quote->save();
+                            } elseif (($blacklistSkuQty - $productsInCart) > 0) {
+                                $quote->addProduct($product, ($blacklistSkuQty - $productsInCart));
+                                $this->messageManager->addWarningMessage("added only $blacklistSkuQty items");
+                            } else {
+                                $this->messageManager->addWarningMessage("Sorry!");
+                            }
+                        } else {
+                            $quote->addProduct($product, $qty);
+                            $quote->save();
+                        }
+//                        $quote->addProduct($product, $qty);
 //                        $this->eventManager->dispatch(
 //                            'amasty_secondUserName_add_product_to_cart',
 //                            ['product' => $product]);
