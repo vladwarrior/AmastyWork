@@ -1,0 +1,19 @@
+<!--@subject Amasty Test Module Wish Notification @-->
+<!--@vars
+{
+"vars wish":"Wish",
+"var wish_id":"Wish Id",
+"var wish_text":"Wish Text"
+}
+@-->
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "You wish with id %wish_id is done!" wish_id=$wish_id}}</p>
+<p>{{var wish.text}}</p>
+
+{{layout
+    handle="amasty_username_email"
+    wish_id=$wish_id
+}}
+
+{{template config_path="design/email/footer_template"}}

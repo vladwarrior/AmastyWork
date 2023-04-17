@@ -8,6 +8,7 @@
                 <welcome_text>Hi, anybody!</welcome_text>
                 <hide>1</hide>
                 <qty_number>7</qty_number>
+                <email>vlad@mail.com</email>
             </general>
         </test_config>
     </default>

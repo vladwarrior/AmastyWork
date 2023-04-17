@@ -3,7 +3,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="Amasty_UserName" translate="label" sortOrder="9">
-            <label>Amasty User Name</label>
+            <label>Amasty UserName</label>
         </tab>
         <section id="test_config" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>User Name Config</label>
@@ -32,6 +32,15 @@
                     <depends>
                         <field id="hide">1</field>
                     </depends>
+                </field>
+
+                <field id="email" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="email_template" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show all the Email template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
                 </field>
             </group>
         </section>

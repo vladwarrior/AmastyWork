@@ -20,6 +20,7 @@
         <column xsi:type="int" name="blacklist_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Black List ID" />
         <column xsi:type="varchar" name="sku" nullable="false" length="255" default="" comment="SKU product" />
         <column xsi:type="int" name="qty" nullable="false" unsigned="true" comment="QTY product" />
+        <column xsi:type="varchar" name="email_body" nullable="false" length="255" default="" comment="Email Body" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="blacklist_id" />
         </constraint>
