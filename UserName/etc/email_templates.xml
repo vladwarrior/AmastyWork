@@ -17,5 +17,6 @@
               label="Blacklist Email Template"
               file="email_template.html"
               type="html"
-              module="Amasty_UserName" area="frontend"/>
+              module="Amasty_UserName"
+              area="frontend"/>exit
 </config>
